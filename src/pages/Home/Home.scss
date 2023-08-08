@@ -1,0 +1,16 @@
+.Home {
+    .games-list {
+        padding: 0 4rem;
+
+        h2{
+            padding: 4rem 0;
+        }
+        .games {
+            min-height: 80vh;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            column-gap: 2rem;
+            row-gap: 4rem;
+        }
+    }
+}

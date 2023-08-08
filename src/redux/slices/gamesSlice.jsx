@@ -5,10 +5,10 @@ import { popularGamesUrl, upcomingGamesUrl, newGamesUrl } from "../../api";
 export const gamesSlice = createSlice({
   name: "games",
   initialState: {
-    popular: [],
-    new: [],
-    upcoming: [],
-    searched: [],
+    popularGames: [],
+    newGames: [],
+    upcomingGames: [],
+    searchedGames: [],
   },
   reducers: {
     fetchGames: (state, data) => {
@@ -27,9 +27,9 @@ export const loadGames = () => async (dispatch) => {
 
   dispatch(
     gamesSlice.actions.fetchGames({
-      popular: popularGames.data.results,
-      upcoming: upcomingGames.data.results,
-      new: newGames.data.results,
+      popularGames: popularGames.data.results,
+      upcomingGames: upcomingGames.data.results,
+      newGames: newGames.data.results,
     })
   );
 };

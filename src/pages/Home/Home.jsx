@@ -26,6 +26,24 @@ function Home() {
           ))}
         </div>
       </div>
+
+      <div className="games-list">
+        <h2>New Games</h2>
+        <div className="games">
+          {newGames.map((game) => (
+            <Game key={game.id} game={game} />
+          ))}
+        </div>
+      </div>
+
+      <div className="games-list">
+        <h2>Upcoming Games</h2>
+        <div className="games">
+          {upcomingGames.map((game) => (
+            <Game key={game.id} game={game} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

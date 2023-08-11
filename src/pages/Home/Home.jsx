@@ -4,6 +4,7 @@ import { loadGames } from "../../redux/slices/gamesSlice";
 import { useEffect } from "react";
 // Importing components
 import Game from "../../components/Game/Game";
+import GameDetails from "../../components/GameDetails/GameDetails";
 
 function Home() {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ function Home() {
 
   return (
     <div className="Home">
+      <GameDetails />
       <div className="games-list">
         <h2>Popular Games</h2>
         <div className="games">

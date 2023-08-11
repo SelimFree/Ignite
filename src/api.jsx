@@ -29,6 +29,7 @@ const popularGames = `games?dates=${previousDate},${currentDate}&ordering=-ratin
 const upcomingGames = `games?dates=${currentDate},${nextDate}&ordering=-added&page_size=10`;
 const newGames = `games?dates=${previousDate},${currentDate}&ordering=-released&page_size=10`;
 
+
 //API URL's
 export const popularGamesUrl = `${baseUrl}${popularGames}&key=${
   import.meta.env.VITE_APP_API_KEY
@@ -37,5 +38,11 @@ export const upcomingGamesUrl = `${baseUrl}${upcomingGames}&key=${
   import.meta.env.VITE_APP_API_KEY
 }`;
 export const newGamesUrl = `${baseUrl}${newGames}&key=${
+  import.meta.env.VITE_APP_API_KEY
+}`;
+export const gameUrl = (id) => `${baseUrl}games/${id}?key=${
+  import.meta.env.VITE_APP_API_KEY
+}`;
+export const gameScreenshotsUrl = (id) => `${baseUrl}games/${id}/screenshots?key=${
   import.meta.env.VITE_APP_API_KEY
 }`;

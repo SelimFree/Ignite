@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
 import { loadDetails } from "../../redux/slices/detailsSlice"
+import { Link } from "react-router-dom"
 import "./Game.scss"
 
 function Game({game}) {
@@ -11,9 +12,11 @@ function Game({game}) {
   }
   return (
     <div className="Game" onClick={loadDetailsHandler}>
-        <h3>{game.name}</h3>
-        <p>{game.released}</p>
-        <img src={game.background_image} />
+      <Link to={`games/${game.id}`}>
+          <h3>{game.name}</h3>
+          <p>{game.released}</p>
+          <img src={game.background_image} />
+      </Link>
     </div>
   )
 }

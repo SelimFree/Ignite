@@ -6,19 +6,29 @@ export const detailsSlice = createSlice({
   name: "details",
   initialState: {
     game: {},
-    screenshots: []
+    screenshots: [],
+    isLoading: true
   },
   reducers: {
     fetchDetails: (state, data) => {
       return {
         ...state,
         ...data.payload,
+        isLoading: false
+      };
+    },
+    startLoading: (state) => {
+      return {
+        ...state,
+        isLoading: true
       };
     },
   },
 });
 
 export const loadDetails = (id) => async (dispatch) => {
+
+  dispatch(detailsSlice.actions.startLoading())
   const gameDetails = await axios.get(gameUrl(id));
   const gameScreenshots = await axios.get(gameScreenshotsUrl(id));
 
@@ -32,6 +42,6 @@ export const loadDetails = (id) => async (dispatch) => {
 
 
 // Action creators are generated for each case reducer function
-export const { fetchDetails } = detailsSlice.actions;
+export const { fetchDetails, startLoading} = detailsSlice.actions;
 
 export default detailsSlice.reducer;

@@ -1,7 +1,7 @@
 import "./Home.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { loadGames } from "../../redux/slices/gamesSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 // Importing components
 import Game from "../../components/Game/Game";
@@ -19,11 +19,10 @@ function Home() {
   );
 
   const location = useLocation()
-  const gameId = location.pathname.split('/')[2];
-
+  const gameId = location.pathname.split("/")[2]
   return (
     <div className="Home">
-      {gameId && <GameDetails/>}
+      {gameId ? (<GameDetails/>) : <></>}
       <div className="games-list">
         <h2>Popular Games</h2>
         <div className="games">

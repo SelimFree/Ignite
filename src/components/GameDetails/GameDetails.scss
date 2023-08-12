@@ -39,16 +39,32 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-bottom: 2rem;
+        .stars {
+          width: 15rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
 
+          img {
+            width: 25px;
+          }
+        }
         .info {
           text-align: center;
-
+          
           .platforms {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-between;
+            align-items: center;
+
+            :last-child {
+              margin: 0 0 0 1rem;
+            }
 
             img {
-              margin-left: 2rem;
+              width: 2rem;
+              margin: 0 1rem
             }
           }
         }

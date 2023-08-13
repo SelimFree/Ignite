@@ -46,3 +46,6 @@ export const gameUrl = (id) => `${baseUrl}games/${id}?key=${
 export const gameScreenshotsUrl = (id) => `${baseUrl}games/${id}/screenshots?key=${
   import.meta.env.VITE_APP_API_KEY
 }`;
+export const gameSearchedUrl = (game_name) => `${baseUrl}games?search=${game_name}&key=${
+  import.meta.env.VITE_APP_API_KEY
+}`;

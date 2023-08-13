@@ -16,7 +16,7 @@ function Home() {
     dispatch(loadGames());
   }, []);
 
-  const { popularGames, upcomingGames, newGames } = useSelector(
+  const { popularGames, upcomingGames, newGames, searchedGames } = useSelector(
     (state) => state.games
   );
 
@@ -25,7 +25,22 @@ function Home() {
   return (
     <motion.div className="Home">
       <LayoutGroup>
-        <AnimatePresence>{gameId ? <GameDetails layoutId={gameId}/> : <></>}</AnimatePresence>
+        <AnimatePresence>
+          {gameId ? <GameDetails layoutId={gameId} /> : <></>}
+        </AnimatePresence>
+        {searchedGames.text && (
+          <div className="search-list">
+            <div className="games-list">
+              <h2>Searching for "{searchedGames.text}"</h2>
+              <div className="games">
+                {searchedGames.games.map((game) => (
+                  <Game key={game.id} game={game} />
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="games-list">
           <h2>Popular Games</h2>
           <div className="games">

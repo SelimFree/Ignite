@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { popularGamesUrl, upcomingGamesUrl, newGamesUrl } from "../../api";
+import { popularGamesUrl, upcomingGamesUrl, newGamesUrl, gameSearchedUrl } from "../../api";
 
 export const gamesSlice = createSlice({
   name: "games",
@@ -8,13 +8,25 @@ export const gamesSlice = createSlice({
     popularGames: [],
     newGames: [],
     upcomingGames: [],
-    searchedGames: [],
+    searchedGames: {
+      text: "",
+      games: []
+    },
   },
   reducers: {
     fetchGames: (state, data) => {
       return {
         ...state,
         ...data.payload,
+      };
+    },
+    clearSearch: (state) => {
+      return {
+        ...state,
+        searchedGames: {
+          text: "",
+          games: []
+        },
       };
     },
   },
@@ -34,7 +46,21 @@ export const loadGames = () => async (dispatch) => {
   );
 };
 
+export const loadSearchedGames = (game_name) => async (dispatch) => {
+  const searchedGames = await axios.get(gameSearchedUrl(game_name));
+
+  dispatch(
+    gamesSlice.actions.fetchGames({
+      searchedGames: {
+        text: game_name,
+        games: searchedGames.data.results
+      },
+    })
+  );
+};
+
+
 // Action creators are generated for each case reducer function
-export const { fetchGames } = gamesSlice.actions;
+export const { fetchGames, clearSearch } = gamesSlice.actions;
 
 export default gamesSlice.reducer;

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 //Animation
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { fadeIn } from "../../animation";
 // Importing components
 import Game from "../../components/Game/Game";
 import GameDetails from "../../components/GameDetails/GameDetails";
@@ -23,7 +24,7 @@ function Home() {
   const location = useLocation();
   const gameId = location.pathname.split("/")[2];
   return (
-    <motion.div className="Home">
+    <motion.div className="Home" variants={fadeIn} initial="hidden" animate="show">
       <LayoutGroup>
         <AnimatePresence>
           {gameId ? <GameDetails layoutId={gameId} /> : <></>}
